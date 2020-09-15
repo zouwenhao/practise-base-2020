@@ -1,4 +1,4 @@
-package cn.zou.leetcode.type1_numsum;
+package cn.zou.leetcode.type_numsum;
 
 import java.util.*;
 
@@ -383,7 +383,7 @@ public class T015ThreeSum {
                     numList.add(integers[1]);
                     numsList.add(numList);
                 } else {
-                    int target = 0 - nums[i] - nums[j];
+                    int target = - nums[i] - nums[j];
                     record.put(target, new Integer[] {nums[i], nums[j]});
                 }
             }

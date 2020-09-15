@@ -1,4 +1,4 @@
-package cn.zou.leetcode.type2_reverse;
+package cn.zou.leetcode.type_reverse;
 
 import java.util.Arrays;
 import java.util.HashSet;

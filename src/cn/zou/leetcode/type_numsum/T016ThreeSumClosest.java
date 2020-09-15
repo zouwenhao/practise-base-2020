@@ -1,4 +1,4 @@
-package cn.zou.leetcode.type1_numsum;
+package cn.zou.leetcode.type_numsum;
 
 import java.util.Arrays;
 
