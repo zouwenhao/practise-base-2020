@@ -46,6 +46,16 @@ public class T345ReverseVowels {
         System.out.println(t345ReverseVowels.reverseVowels("aA"));
     }
 
+    /**
+     * 反转字符串中的元音字母
+     *
+     * 反转-》双指针、Hash
+     * 在字符串的头尾分别设置一个索引
+     * 对左索引上的字母hash搜索判断是否是元音字母，是的话停止移动索引，否则一直右移左索引，移动范围最大不超过右索引；右索引也做类似操作。
+     * 当两个索引上的字母都是元音字母时就交换，再移动一次左右索引
+     * @param s
+     * @return
+     */
     public String reverseVowels(String s) {
         if (s==null) return null;
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));
