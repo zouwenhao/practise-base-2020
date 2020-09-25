@@ -1,8 +1,6 @@
 package cn.zou.test_yinyong;
 
-import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
 
 public class Main {
 

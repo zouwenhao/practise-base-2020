@@ -15,7 +15,7 @@ public class FileTest {
             InputStream in = new FileInputStream(source);
             byte[] bytes = new byte[1024];
             while (in.read(bytes, 0, bytes.length) != -1) {
-                System.out.printf("");
+                System.out.print("");
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,11 +1,10 @@
 package cn.zou.mianshi;
 
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ZiJie1_1 {
+public class ZiJie1 {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,7 +30,7 @@ public class ZiJie1_1 {
         List<int[]> numbersList = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                int thirdNumber = nums[i] - nums[j];
+                int thirdNumber = - nums[i] - nums[j];
                 for (int k = j + 1; k < nums.length; k++) {
                     if (thirdNumber == nums[k]) {
                         int[] numbers = new int[3];

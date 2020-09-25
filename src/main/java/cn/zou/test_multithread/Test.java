@@ -6,18 +6,15 @@ public class Test extends Thread {
         Test test = new Test();
         System.out.println("123");
         test.start();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    sleep(1500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                synchronized (test) {
-                    System.out.println("notify");
-                    test.notify();
-                }
+        Runnable runnable = () -> {
+            try {
+                sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            synchronized (test) {
+                System.out.println("notify");
+                test.notify();
             }
         };
         runnable.run();
