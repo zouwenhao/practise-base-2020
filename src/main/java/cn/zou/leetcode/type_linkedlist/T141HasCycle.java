@@ -26,6 +26,7 @@ public class T141HasCycle {
      *  1).向后移动指针A一次，指针B两次
      *  2).当两指针相等时：若不为空，说明链表存在环，返回true，否则返回false
      * 3.不存在环，返回false
+     * 只要在移动指针后，指针为空，必不可能是环
      * @param head
      * @return
      */
