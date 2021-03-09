@@ -1,5 +1,9 @@
 package cn.zou.test_multithread;
 
+import javafx.concurrent.Task;
+
+import java.util.concurrent.*;
+
 public class Test extends Thread {
 
     public static void main(String[] args) {
@@ -19,7 +23,13 @@ public class Test extends Thread {
         };
         runnable.run();
 
-
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 3, 1000,
+                TimeUnit.MILLISECONDS, new PriorityBlockingQueue<>());
+        Future<?> submit = threadPoolExecutor.submit(() -> {
+            System.out.println(1);
+        });
+        //Task task = new Task();
+        //FutureTask<Object> futureTask = new FutureTask<Object>(task); //不行
     }
 
     public void print() {

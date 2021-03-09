@@ -15,6 +15,19 @@ public class T141HasCycle {
 
     public static void main(String[] args) {
         T141HasCycle t141HasCycle = new T141HasCycle();
+        System.out.println(t141HasCycle.judgeCycle(null));
+        System.out.println(t141HasCycle.judgeCycle(new ListNode(0)));
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node1;
+        System.out.println(t141HasCycle.judgeCycle(node1));
+    }
+
+    public boolean judgeCycle(ListNode head) {
+        return hasCycleRetest(head);
     }
 
     /**
@@ -42,6 +55,19 @@ public class T141HasCycle {
                 if (high != null) return true;
                 else return false;
             }
+        }
+        return false;
+    }
+
+    public boolean hasCycleRetest(ListNode head) {
+        if (head == null || head.next == null) return false;
+        ListNode slow = head, high = head.next;
+        while (high != null && slow != null) {
+            if (slow == high) return true;
+            slow = slow.next;
+            high = high.next;
+            if (high == null) return false;
+            else high = high.next;
         }
         return false;
     }

@@ -1,6 +1,7 @@
 package cn.zou.leetcode.type_find;
 
 import java.util.PriorityQueue;
+import java.util.Random;
 
 /**
  * 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
@@ -33,6 +34,12 @@ public class T215FindKthLargest {
         System.out.println(kthLargest.findKthLargest(nums2, 4));
     }
 
+    /**
+     * 基于优先队列的api
+     * @param nums
+     * @param k
+     * @return
+     */
     public int findKthLargest(int nums[], int k) {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int val : nums) {

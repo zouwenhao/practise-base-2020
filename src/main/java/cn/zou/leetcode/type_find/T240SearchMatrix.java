@@ -31,10 +31,10 @@ public class T240SearchMatrix {
     public static void main(String[] args) {
         T240SearchMatrix find = new T240SearchMatrix();
         int[][] nums1 = new int[][]{{1,3,4,6},{2,7,8,10}};
-        System.out.println(find.searchMatrix(nums1,9));
-        System.out.println(find.searchMatrix(null,9));
-        System.out.println(find.searchMatrix(new int[][]{{}},9));
-        System.out.println(find.searchMatrix(new int[][]{{1}},1));
+        System.out.println(find.searchMatrixRetest(nums1,9));
+        System.out.println(find.searchMatrixRetest(null,9));
+        System.out.println(find.searchMatrixRetest(new int[][]{{}},9));
+        System.out.println(find.searchMatrixRetest(new int[][]{{1}},1));
     }
 
     public boolean searchMatrix(int[][] matrix, int target) {
@@ -51,6 +51,17 @@ public class T240SearchMatrix {
             } else {
                 col--;
             }
+        }
+        return false;
+    }
+
+    public boolean searchMatrixRetest(int[][] nums, int target) {
+        if (nums == null) return false;
+        int row = 0, column = nums[0].length - 1;
+        while (row != nums.length && column != -1) {
+            if (nums[row][column] == target) return true;
+            else if (nums[row][column] > target) column--;
+            else row++;
         }
         return false;
     }

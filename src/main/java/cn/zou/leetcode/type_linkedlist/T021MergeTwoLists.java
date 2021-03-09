@@ -35,7 +35,8 @@ public class T021MergeTwoLists {
         b.next = e;
         e.next = f;
         ListNode l3;
-        l3 = t021MergeTwoLists.mergeTwoLists(l1, l2);
+        //l3 = t021MergeTwoLists.mergeTwoLists(l1, l2);
+        l3 = t021MergeTwoLists.mergeTwoListsRetest(l1, l2);
         while (l3 != null) {
             System.out.println(l3.val);
             l3 = l3.next;
@@ -75,6 +76,22 @@ public class T021MergeTwoLists {
             l3 = l3.next;
         }
         // 当其中一个链表为空时，直接连接另一个链表的剩余部分
+        l3.next = l1 == null ? l2 : l1;
+        return l3Head.next;
+    }
+
+    public ListNode mergeTwoListsRetest(ListNode l1, ListNode l2) {
+        ListNode l3 = new ListNode(0), l3Head = l3;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                l3.next = l1;
+                l1 = l1.next;
+            } else {
+                l3.next = l2;
+                l2 = l2.next;
+            }
+            l3 = l3.next;
+        }
         l3.next = l1 == null ? l2 : l1;
         return l3Head.next;
     }

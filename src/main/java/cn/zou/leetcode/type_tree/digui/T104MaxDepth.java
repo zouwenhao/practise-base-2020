@@ -18,7 +18,7 @@ public class T104MaxDepth {
         root.right = root2;
         root2.left = root21;
         root2.right = root22;
-        System.out.println(t104MaxDepth.maxDepthBFS(root));
+        System.out.println(t104MaxDepth.getDepthBFSRetest(root));
     }
 
     /**
@@ -55,6 +55,24 @@ public class T104MaxDepth {
             result++; //当前层的节点处理完，层数+1
         }
         return result;
+    }
+
+    public int getDepthBFSRetest(TreeNode root) {
+        if (root == null) return 0;
+        int depth = 0;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int size = queue.size();
+        while (size > 0) {
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) queue.offer(node.left);
+                if (node.right != null) queue.offer(node.right);
+            }
+            size = queue.size();
+            depth++;
+        }
+        return depth;
     }
 
 }

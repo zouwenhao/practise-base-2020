@@ -1,19 +1,34 @@
 package cn.zou.leetcode.type_find;
 
+/**
+ * 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target  ，写一个函数搜索 nums 中的 target，如果目标值存在返回下标，否则返回 -1。
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/binary-search
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ */
 public class T704Search {
 
     public static void main(String[] args) {
-        T704Search zijie2_1 = new T704Search();
-        System.out.println(zijie2_1.search(new int[]{}, 0));
-        System.out.println(zijie2_1.search(new int[]{0}, 0));
-        System.out.println(zijie2_1.search(new int[]{0}, 1));
-        System.out.println(zijie2_1.search(new int[]{1,2}, 1));
-        System.out.println(zijie2_1.search(new int[]{1,2}, 2));
-        System.out.println(zijie2_1.search(new int[]{1,2,3}, 2));
-        System.out.println(zijie2_1.search(new int[]{1,2,3,4}, 4));
-        System.out.println(zijie2_1.search(new int[]{1,2,3,4,5}, 0));
-        System.out.println(zijie2_1.search(new int[]{0,1,3,4,5,6}, 2));
-        System.out.println(zijie2_1.search(new int[]{1,2,3}, 1));
+        T704Search t704Search = new T704Search();
+        System.out.println(t704Search.search(new int[]{}, 0));
+        System.out.println(t704Search.search(new int[]{0}, 0));
+        System.out.println(t704Search.search(new int[]{0}, 1));
+        System.out.println(t704Search.search(new int[]{1,2}, 1));
+        System.out.println(t704Search.search(new int[]{1,2}, 2));
+        System.out.println(t704Search.search(new int[]{1,2,3}, 2));
+        System.out.println(t704Search.search(new int[]{1,2,3,4}, 4));
+        System.out.println(t704Search.search(new int[]{1,2,3,4,5}, 0));
+        System.out.println(t704Search.search(new int[]{0,1,3,4,5,6}, 2));
+        System.out.println(t704Search.search(new int[]{1,2,3}, 1));
+    }
+    
+    public int search(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        //return searchByRec(nums, left, right, target);
+        return searchByRecRetest(nums, left, right, target);
+        //return searchByHalf(nums, target);
+        //return searchByHalfRetest(nums, target);
     }
 
     /**
@@ -46,10 +61,18 @@ public class T704Search {
         }
         return -1;
     }
-    
-    public int search(int[] nums, int target) {
+
+    public int searchByHalfRetest(int[] nums, int target) {
+        if (nums == null) return -1;
         int left = 0, right = nums.length - 1;
-        return searchByRec(nums, left, right, target);
+        int middle = right / 2;
+        while (left <= right) {
+            if (nums[middle] == target) return middle;
+            else if (nums[middle] > target) right = middle - 1;
+            else left = middle + 1;
+            middle = (left + right) / 2;
+        }
+        return -1;
     }
 
     /**
@@ -80,6 +103,13 @@ public class T704Search {
         return searchByRec(nums, left, right, target);
     }
 
+    public int searchByRecRetest(int[] nums, int left, int right, int target) {
+        if (left > right) return -1;
+        int middle = (left + right) / 2;
+        if (nums[middle] == target) return middle;
+        else if (nums[middle] > target) return searchByRecRetest(nums, left, middle - 1, target);
+        else return searchByRecRetest(nums, middle + 1, right, target);
+    }
 
     public int searchByHalf_error(int[] nums, int target) {
         if (nums.length == 0) return -1;
