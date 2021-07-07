@@ -6,6 +6,7 @@ package test;
  * -1  0 -1 -1 0
  */
 
+import java.util.HashMap;
 import java.util.Stack;
 
 /**
